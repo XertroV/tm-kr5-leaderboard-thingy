@@ -11,6 +11,7 @@ class MapInfo {
     string author;
     string authorFmt;
 
+    int wrTime;
     string wrTimeStr;
     string pbTimeStr;
     string avgTimeStr;
@@ -51,6 +52,8 @@ class MapInfo {
         this.wrHolderFmt = Text::OpenplanetFormatCodes(j[7]);
         this.finishes = int(j[8]);
         this.karma = float(j[9]);
+
+        this.wrTime = Time::ParseRelativeTime(this.wrTimeStr);
     }
 
     void LoadMapLbAsync() {
@@ -137,11 +140,30 @@ class MapInfo {
         // if (S_InMap_ShowWRHolderName) {
         //     DrawRow("", wrHolderFmt);
         // }
-        DrawRow(Icons::Users, tostring(finishes));
 
+        int pbTimeTmp = 0;
         if (myLbEntry !is null) {
-            DrawRow("PB", myLbEntry.timeStr + " \\$999 #" + myLbEntry.rank + " \\$<\\$aaa|\\$> " + myLbEntry.finishes + " fin");
+            auto @myOverallAvg = g_MapCollection.myLbEntry;
+            auto myAvg = myOverallAvg !is null ? myOverallAvg.average : 9999.0;
+            auto fRank = float(myLbEntry.rank);
+            pbTimeTmp = myLbEntry.time;
+
+            auto colStr = fRank <= myAvg ? "3d3" : (fRank <= myAvg + 50 ? "dd3" : "d33");
+            DrawRow("PB", myLbEntry.timeStr + " \\$"+colStr+" #" + myLbEntry.rank + " \\$<\\$aaa|\\$> \\$999" + myLbEntry.finishes + " fin" + (myLbEntry.finishes == 1 ? "" : "s"));
+
+            if (S_InMap_ShowGapToWR) {
+                DrawRow("", FmtTimeMbNegative(myLbEntry.time - wrTime, true) + "  \\$i\\$aaa behind WR");
+            }
         }
+
+        if (S_InMap_ShowNbFinishers) {
+            DrawRow(Icons::Users, tostring(finishes));
+        }
+
+#if DEV
+        DrawRow("WRt", tostring(wrTime));
+        DrawRow("PBt", tostring(pbTimeTmp));
+#endif
 
 
         if (isRefreshing) {
@@ -183,6 +205,7 @@ class MapLbEntry {
     string name;
     string nameFmt;
     string timeStr;
+    int time;
     int finishes;
 
     MapLbEntry() {}
@@ -197,5 +220,7 @@ class MapLbEntry {
         this.nameFmt = Text::OpenplanetFormatCodes(j[2]);
         this.timeStr = j[3];
         this.finishes = int(j[4]);
+        if (timeStr.Length <= 8) timeStr += "0";
+        this.time = Time::ParseRelativeTime(this.timeStr);
     }
 }

@@ -20,6 +20,13 @@ bool S_InMap_ShowWRHolderName = true;
 [Setting category="In-Map UI" name="Font Choice"]
 FontChoice S_InMap_FontChoice = FontChoice::DroidSans16;
 
+[Setting category="In-Map UI" name="Show Number of Finishers"]
+bool S_InMap_ShowNbFinishers = true;
+
+[Setting category="In-Map UI" name="Show PB Gap to WR"]
+bool S_InMap_ShowGapToWR = true;
+
+
 [Setting category="Big Window" name="Apply In-Map Font to Big Window"]
 bool S_ApplyFontBigWindow = true;
 
@@ -27,7 +34,7 @@ bool S_ApplyFontBigWindow = true;
 vec3 S_RelativeAheadColor = vec3(0.0, 1.0, 0.0);
 
 // [Setting category="Colors" name="Relative: Behind"]
-vec3 S_RelativeBehindColor = vec3(1.0, 0.0, 0.0);
+vec3 S_RelativeBehindColor = vec3(1.0, .75, .2);
 
 [Setting category="Logs" name="Extra logging (requests mostly)"]
 bool S_ExtraLogging = false;

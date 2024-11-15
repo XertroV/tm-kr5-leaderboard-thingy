@@ -74,6 +74,14 @@ void RenderInterface() {
     }
 }
 
+/** Render function called every frame intended only for menu items in `UI`.
+*/
+void RenderMenu() {
+    if (UI::MenuItem("KR5 Thingy: Big Window", "", g_ShowMainWindow)) {
+        g_ShowMainWindow = !g_ShowMainWindow;
+    }
+}
+
 // for rendering in-map ui
 bool ShouldRenderGenerally() {
     // for testing
@@ -143,6 +151,16 @@ void DrawRightClickMenu() {
 
         if (UI::MenuItem("Show WR Holder Name", "", S_InMap_ShowWRHolderName)) {
             S_InMap_ShowWRHolderName = !S_InMap_ShowWRHolderName;
+            UI::CloseCurrentPopup();
+        }
+
+        if (UI::MenuItem("Show PB Gap to WR", "", S_InMap_ShowGapToWR)) {
+            S_InMap_ShowGapToWR = !S_InMap_ShowGapToWR;
+            UI::CloseCurrentPopup();
+        }
+
+        if (UI::MenuItem("Show Number of Finishers", "", S_InMap_ShowNbFinishers)) {
+            S_InMap_ShowNbFinishers = !S_InMap_ShowNbFinishers;
             UI::CloseCurrentPopup();
         }
 

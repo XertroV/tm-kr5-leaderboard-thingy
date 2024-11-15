@@ -1,6 +1,7 @@
 class MapCollection {
     MapInfo[] mapInfos;
     MainResultsEntry[] lb;
+    MainResultsEntry@ myLbEntry;
 
     dictionary playerToIx;
     dictionary mapUidToIx;
@@ -41,9 +42,14 @@ class MapCollection {
         if (resultsRefreshAfter < Time::Stamp + 120) resultsRefreshAfter = Time::Stamp + 120;
         auto results = j['results'];
         lb.Resize(results.Length);
+        @myLbEntry = null;
         for (uint i = 0; i < results.Length; i++) {
-            lb[i].FromJson(results[i]);
-            playerToIx[lb[i].name] = i;
+            auto @lbEntry = lb[i];
+            lbEntry.FromJson(results[i]);
+            playerToIx[lbEntry.name] = i;
+            if (lbEntry.name == S_PlayerName) {
+                @myLbEntry = lbEntry;
+            }
         }
         isRefreshing = false;
     }
