@@ -1,0 +1,16 @@
+[meta]
+name     = "KR5 Leaderboard"
+author   = "XertroV"
+category = "Utilities"
+version  = "0.1.0"
+siteid   = 653
+
+[script]
+#__DEFINES__
+dependencies = ["NadeoServices"]
+# dependencies = ["NadeoServices", "MLHook", "MLFeedRaceData", "BetterRoomManager"]
+# optional_dependencies = ["BetterChat",
+#     "mapinfo", "map-info-dev"
+#     ]
+# module = "RMKO"
+# exports = ["ExportCode.as"]
