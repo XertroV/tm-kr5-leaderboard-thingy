@@ -72,6 +72,7 @@ class MapInfo {
     }
 
     void CheckMyRecord() {
+        @this.myLbEntry = null;
         for (uint i = 0; i < lbEntries.Length; i++) {
             if (lbEntries[i].name == S_PlayerName) {
                 @this.myLbEntry = lbEntries[i];

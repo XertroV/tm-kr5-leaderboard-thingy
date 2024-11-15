@@ -45,7 +45,7 @@ Json::Value@ CallMapMonitorApiPath(const string &in path) {
     auto url = MM_API_ROOT + path;
     log_trace("[CallMapMonitorApiPath] Requesting: " + url);
     Net::HttpRequest@ req = Net::HttpRequest();
-    req.Url = MM_API_ROOT + path;
+    req.Url = url;
     req.Headers['User-Agent'] = PluginID+'/'+PluginVersion+'/Openplanet-Plugin/contact=@'+PluginAuthor;
     // req.Headers['Authorization'] = 'openplanet ' + token;
     req.Method = Net::HttpMethod::Get;
