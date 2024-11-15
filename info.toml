@@ -2,7 +2,7 @@
 name     = "KR5 Leaderboard"
 author   = "XertroV"
 category = "Utilities"
-version  = "0.1.0"
+version  = "0.1.1"
 siteid   = 653
 
 [script]
