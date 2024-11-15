@@ -24,10 +24,10 @@ FontChoice S_InMap_FontChoice = FontChoice::DroidSans16;
 bool S_ApplyFontBigWindow = true;
 
 // [Setting category="Colors" name="Relative: Ahead"]
-// vec3 S_RelativeAheadColor = vec3(0.0, 1.0, 0.0);
+vec3 S_RelativeAheadColor = vec3(0.0, 1.0, 0.0);
 
 // [Setting category="Colors" name="Relative: Behind"]
-// vec3 S_RelativeBehindColor = vec3(1.0, 0.0, 0.0);
+vec3 S_RelativeBehindColor = vec3(1.0, 0.0, 0.0);
 
 [Setting category="Logs" name="Extra logging (requests mostly)"]
 bool S_ExtraLogging = false;
