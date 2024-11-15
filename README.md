@@ -1,5 +1,7 @@
 # KR5 Leaderboard Thingy
 
+Show some stats about KR5 leaderboard and your position on it, includes in-map UI. right click it for quick settings
+
 License: Public Domain
 
 Authors: XertroV
